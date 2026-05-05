@@ -6,14 +6,11 @@ edition.workspace = true
 [lib]
 crate-type = ["cdylib"]
 
+[features]
+testutils = ["soroban-sdk/testutils"]
+
 [dependencies]
-soroban-sdk = { version = "21.0", features = ["contract"] }
+soroban-sdk = { version = "21.0", features = ["alloc"] }
 
 [dev-dependencies]
-soroban-sdk = { version = "21.0", features = ["contract"] }
-
-[profile.release]
-opt-level = "z"
-lto = true
-codegen-units = 1
-strip = true
+soroban-sdk = { version = "21.0", features = ["alloc", "testutils"] }
